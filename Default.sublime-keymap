@@ -1,0 +1,3 @@
+[
+	{ "keys": ["ctrl+,"], "command" : "read_scheme", "context": [{"key": "setting.command_mode", "operator": "equal", "operand": true}] }
+]
