@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-    livecss.theme
+    Use some code from livecss
     ~~~~~~~~~
 
     This module implements abstraction around ST theme.
@@ -12,26 +12,28 @@ from os.path import basename, normpath, relpath, exists
 from random import randint
 import os.path
 import re
+import plistlib
 
 import sublime
+from path import package_path, sublime_path
+
+em_syntax = 'Packages/EasyMotion/EasyMotion.tmLanguage'
 
 class Theme(object):
     """Global object represents ST color scheme """
-    def __init__(self, settings):
-        self.package_path = sublime.packages_path()
-        self.sublime_path = os.path.dirname(self.package_path)
-        self._settings = settings
+    def __init__(self, theme_path):
+        self.theme_path = theme_path
         self.abs_path = None
 
     def abspath(self):
         if self.abs_path:
             return self.abs_path
 
-        theme_path = self._settings.get('color_scheme') or ""
-        if theme_path.startswith('Packages'):
-            theme_path = os.path.join(self.sublime_path, theme_path)
+        # likely
+        if self.theme_path.startswith('Packages'):
+            self.theme_path = os.path.join(sublime_path, self.theme_path)
 
-        self.abs_path = normpath(theme_path)
+        self.abs_path = normpath(self.theme_path)
         return self.abs_path
 
     def dirname(self):
@@ -40,43 +42,93 @@ class Theme(object):
     def name(self):
         return basename(self.abspath())
 
-    def set(self, theme_path):
-        """Set current theme.
+
+class EMTheme():
+    def __init__(self, theme):
+        self.theme = theme
+        self.easy_theme_cache = "/EasyMotion/themecache/"
+
+    def name(self):
+        return self.theme.name() + "-easy"
+
+    def abspath(self):
+        return package_path + self.easy_theme_cache + self.name()
+
+    def dirname(self):
+        return os.path.dirname(abspath())
+
+
+def theme_from_settings(settings):
+    return settings.get('color_scheme')
+
+def set(settings, theme_path):
+    """Set current theme.
         :param theme: abs or relpath to SUBLIME_PATH
-        """
-        if exists(theme_path):
-            self._settings.set('color_scheme', relpath(theme_path, self.sublime_path))
+    """
+    if exists(theme_path):
+        settings.set('color_scheme', relpath(theme_path, sublime_path))
 
-    def on_select_new_theme(cls, callback):
-        self._settings.add_on_change('color_scheme', callback)
+def on_new_theme(settings, callback):
+    settings.add_on_change('color_scheme', callback)
 
+def store_theme_syntax(settings, theme, syntax):
+    settings.set('easy_motion_replace_theme', theme)
+    settings.set('easy_motion_replace_syntax', syntax)
+    settings.set('easy_motion', True)
 
+def restore_theme_syntax(settings, view):
+    view.set_syntax_file(settings.get('easy_motion_replace_syntax'))
+    set(settings, settings.get('easy_motion_replace_theme'))
+    settings.set('easy_motion', False)
 
-#def is_colorized(name):
-#    if name.startswith(theme.prefix):
-#        return True
-#
-#
-#def colorized_path(path):
-#    dirname = os.path.dirname(path)
-#    name = basename(path)
-#    return os.path.join(dirname, colorized_name(name))
-#
-#
-#def colorized_name(name):
-#    random = str(randint(1, 10 ** 15)) + '-'
-#    return theme.prefix + random + uncolorized_name(name)
-#
-#
-#def uncolorized_name(name):
-#    if is_colorized(name):
-#        s = re.search(theme.prefix + "(\d+-)?(?P<Name>.*)", name)
-#        self_name = s.group('Name')
-#        return self_name
-#    return name
-#
-#
-#def uncolorized_path(path):
-#    dirname = os.path.dirname(path)
-#    name = basename(path)
-#    return os.path.join(dirname, uncolorized_name(name))
+def generate_em_theme(name, for_color, back_color):
+    dict = {
+            'name': name, 
+            'settings':[{
+                'settings':{
+                    'background': back_color, 
+                    'foreground': for_color
+                    }
+                }, {
+                    'name': 'Start Character',
+                    'scope':'keyword.easymotion',
+                    'settings': {'foreground': '#FF0000'}
+                    }
+                ] 
+           }
+    return dict
+
+def filter_for_back_color(plist):
+    settings = plist['settings']
+    for_color = None
+    back_color = None
+    for s in settings:
+        if not 'scope' in s:
+            for_color = s['settings']['foreground']
+            back_color = s['settings']['background']
+            break
+
+    return for_color, back_color
+
+def change_em_theme(settings, view):
+    # current syntax and theme
+    syntax = settings.get('syntax')
+    theme = Theme(theme_from_settings(settings))
+    emtheme = EMTheme(theme)
+    store_theme_syntax(settings, theme.abspath(), syntax)
+
+    theme_file = open(theme.abspath(), 'r')
+    em_theme_file = open(emtheme.abspath(), 'w+')
+
+    # parse theme
+    plist = plistlib.readPlist(theme_file)
+    for_color, back_color = filter_for_back_color(plist)
+    new_plist = generate_em_theme(emtheme.name(), for_color, back_color)
+    plistlib.writePlist(new_plist, em_theme_file)
+
+    # flush file , set syntax and theme
+    theme_file.close()
+    em_theme_file.close()
+    set(settings, emtheme.abspath())
+    view.set_syntax_file(em_syntax)
+
