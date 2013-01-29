@@ -74,12 +74,10 @@ def on_new_theme(settings, callback):
 def store_theme_syntax(settings, theme, syntax):
     settings.set('easy_motion_replace_theme', theme)
     settings.set('easy_motion_replace_syntax', syntax)
-    settings.set('easy_motion', True)
 
 def restore_theme_syntax(settings, view):
     view.set_syntax_file(settings.get('easy_motion_replace_syntax'))
     set(settings, settings.get('easy_motion_replace_theme'))
-    settings.set('easy_motion', False)
 
 def generate_em_theme(name, for_color, back_color):
     dict = {
