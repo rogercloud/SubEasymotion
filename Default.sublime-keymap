@@ -1,0 +1,231 @@
+[
+    // Turn on easy motion
+	{ 
+        "keys": ["ctrl+,", "w"], "command" : "easy_motion", "args": {"direct" : 1}, "context": 
+                [{"key": "setting.command_mode", "operator": "equal", "operand": true}] 
+    },
+	{ 
+        "keys": ["ctrl+,", "b"], "command" : "easy_motion", "args": {"direct" : 2}, "context": 
+                [{"key": "setting.command_mode", "operator": "equal", "operand": true}] 
+    },
+
+    // Cancel easy motion
+    { 
+        "keys": ["ctrl+,"], "command" : "cancel_easymotion", "context": 
+                [{"key": "setting.easy_motion", "operator": "equal", "operand": true}] 
+    },
+    { 
+        "keys": ["escape"], "command" : "cancel_easymotion", "context": 
+                [{"key": "setting.easy_motion", "operator": "equal", "operand": true}] 
+    },
+
+    // Jump to char
+    { 
+        "keys": ["a"], "command" : "easy_motion_jump", "args": {"char" : "a"}, "context": 
+                [{"key": "setting.easy_motion", "operator": "equal", "operand": true}] 
+    },
+    { 
+        "keys": ["b"], "command" : "easy_motion_jump", "args": {"char" : "b"}, "context": 
+                [{"key": "setting.easy_motion", "operator": "equal", "operand": true}] 
+    },
+    { 
+        "keys": ["c"], "command" : "easy_motion_jump", "args": {"char" : "c"}, "context": 
+                [{"key": "setting.easy_motion", "operator": "equal", "operand": true}] 
+    },
+    { 
+        "keys": ["d"], "command" : "easy_motion_jump", "args": {"char" : "d"}, "context": 
+                [{"key": "setting.easy_motion", "operator": "equal", "operand": true}] 
+    },
+    { 
+        "keys": ["e"], "command" : "easy_motion_jump", "args": {"char" : "e"}, "context": 
+                [{"key": "setting.easy_motion", "operator": "equal", "operand": true}] 
+    },
+    { 
+        "keys": ["f"], "command" : "easy_motion_jump", "args": {"char" : "f"}, "context": 
+                [{"key": "setting.easy_motion", "operator": "equal", "operand": true}] 
+    },
+    { 
+        "keys": ["g"], "command" : "easy_motion_jump", "args": {"char" : "g"}, "context": 
+                [{"key": "setting.easy_motion", "operator": "equal", "operand": true}] 
+    },
+    { 
+        "keys": ["h"], "command" : "easy_motion_jump", "args": {"char" : "h"}, "context": 
+                [{"key": "setting.easy_motion", "operator": "equal", "operand": true}] 
+    },
+    { 
+        "keys": ["i"], "command" : "easy_motion_jump", "args": {"char" : "i"}, "context": 
+                [{"key": "setting.easy_motion", "operator": "equal", "operand": true}] 
+    },
+    { 
+        "keys": ["j"], "command" : "easy_motion_jump", "args": {"char" : "j"}, "context": 
+                [{"key": "setting.easy_motion", "operator": "equal", "operand": true}] 
+    },
+    { 
+        "keys": ["k"], "command" : "easy_motion_jump", "args": {"char" : "k"}, "context": 
+                [{"key": "setting.easy_motion", "operator": "equal", "operand": true}] 
+    },
+    { 
+        "keys": ["l"], "command" : "easy_motion_jump", "args": {"char" : "l"}, "context": 
+                [{"key": "setting.easy_motion", "operator": "equal", "operand": true}] 
+    },
+    { 
+        "keys": ["m"], "command" : "easy_motion_jump", "args": {"char" : "m"}, "context": 
+                [{"key": "setting.easy_motion", "operator": "equal", "operand": true}] 
+    },
+    { 
+        "keys": ["n"], "command" : "easy_motion_jump", "args": {"char" : "n"}, "context": 
+                [{"key": "setting.easy_motion", "operator": "equal", "operand": true}] 
+    },
+    { 
+        "keys": ["o"], "command" : "easy_motion_jump", "args": {"char" : "o"}, "context": 
+                [{"key": "setting.easy_motion", "operator": "equal", "operand": true}] 
+    },
+    { 
+        "keys": ["p"], "command" : "easy_motion_jump", "args": {"char" : "p"}, "context": 
+                [{"key": "setting.easy_motion", "operator": "equal", "operand": true}] 
+    },
+    { 
+        "keys": ["q"], "command" : "easy_motion_jump", "args": {"char" : "q"}, "context": 
+                [{"key": "setting.easy_motion", "operator": "equal", "operand": true}] 
+    },
+    { 
+        "keys": ["r"], "command" : "easy_motion_jump", "args": {"char" : "r"}, "context": 
+                [{"key": "setting.easy_motion", "operator": "equal", "operand": true}] 
+    },
+    { 
+        "keys": ["s"], "command" : "easy_motion_jump", "args": {"char" : "s"}, "context": 
+                [{"key": "setting.easy_motion", "operator": "equal", "operand": true}] 
+    },
+    { 
+        "keys": ["t"], "command" : "easy_motion_jump", "args": {"char" : "t"}, "context": 
+                [{"key": "setting.easy_motion", "operator": "equal", "operand": true}] 
+    },
+    { 
+        "keys": ["u"], "command" : "easy_motion_jump", "args": {"char" : "u"}, "context": 
+                [{"key": "setting.easy_motion", "operator": "equal", "operand": true}] 
+    },
+    { 
+        "keys": ["v"], "command" : "easy_motion_jump", "args": {"char" : "v"}, "context": 
+                [{"key": "setting.easy_motion", "operator": "equal", "operand": true}] 
+    },
+    { 
+        "keys": ["w"], "command" : "easy_motion_jump", "args": {"char" : "w"}, "context": 
+                [{"key": "setting.easy_motion", "operator": "equal", "operand": true}] 
+    },
+    { 
+        "keys": ["x"], "command" : "easy_motion_jump", "args": {"char" : "x"}, "context": 
+                [{"key": "setting.easy_motion", "operator": "equal", "operand": true}] 
+    },
+    { 
+        "keys": ["y"], "command" : "easy_motion_jump", "args": {"char" : "y"}, "context": 
+                [{"key": "setting.easy_motion", "operator": "equal", "operand": true}] 
+    },
+    { 
+        "keys": ["z"], "command" : "easy_motion_jump", "args": {"char" : "z"}, "context": 
+                [{"key": "setting.easy_motion", "operator": "equal", "operand": true}] 
+    },
+    { 
+        "keys": ["A"], "command" : "easy_motion_jump", "args": {"char" : "A"}, "context": 
+                [{"key": "setting.easy_motion", "operator": "equal", "operand": true}] 
+    },
+    { 
+        "keys": ["B"], "command" : "easy_motion_jump", "args": {"char" : "B"}, "context": 
+                [{"key": "setting.easy_motion", "operator": "equal", "operand": true}] 
+    },
+    { 
+        "keys": ["C"], "command" : "easy_motion_jump", "args": {"char" : "C"}, "context": 
+                [{"key": "setting.easy_motion", "operator": "equal", "operand": true}] 
+    },
+    { 
+        "keys": ["D"], "command" : "easy_motion_jump", "args": {"char" : "D"}, "context": 
+                [{"key": "setting.easy_motion", "operator": "equal", "operand": true}] 
+    },
+    { 
+        "keys": ["E"], "command" : "easy_motion_jump", "args": {"char" : "E"}, "context": 
+                [{"key": "setting.easy_motion", "operator": "equal", "operand": true}] 
+    },
+    { 
+        "keys": ["F"], "command" : "easy_motion_jump", "args": {"char" : "F"}, "context": 
+                [{"key": "setting.easy_motion", "operator": "equal", "operand": true}] 
+    },
+    { 
+        "keys": ["G"], "command" : "easy_motion_jump", "args": {"char" : "G"}, "context": 
+                [{"key": "setting.easy_motion", "operator": "equal", "operand": true}] 
+    },
+    { 
+        "keys": ["H"], "command" : "easy_motion_jump", "args": {"char" : "H"}, "context": 
+                [{"key": "setting.easy_motion", "operator": "equal", "operand": true}] 
+    },
+    { 
+        "keys": ["I"], "command" : "easy_motion_jump", "args": {"char" : "I"}, "context": 
+                [{"key": "setting.easy_motion", "operator": "equal", "operand": true}] 
+    },
+    { 
+        "keys": ["J"], "command" : "easy_motion_jump", "args": {"char" : "J"}, "context": 
+                [{"key": "setting.easy_motion", "operator": "equal", "operand": true}] 
+    },
+    { 
+        "keys": ["K"], "command" : "easy_motion_jump", "args": {"char" : "K"}, "context": 
+                [{"key": "setting.easy_motion", "operator": "equal", "operand": true}] 
+    },
+    { 
+        "keys": ["L"], "command" : "easy_motion_jump", "args": {"char" : "L"}, "context": 
+                [{"key": "setting.easy_motion", "operator": "equal", "operand": true}] 
+    },
+    { 
+        "keys": ["M"], "command" : "easy_motion_jump", "args": {"char" : "M"}, "context": 
+                [{"key": "setting.easy_motion", "operator": "equal", "operand": true}] 
+    },
+    { 
+        "keys": ["N"], "command" : "easy_motion_jump", "args": {"char" : "N"}, "context": 
+                [{"key": "setting.easy_motion", "operator": "equal", "operand": true}] 
+    },
+    { 
+        "keys": ["O"], "command" : "easy_motion_jump", "args": {"char" : "O"}, "context": 
+                [{"key": "setting.easy_motion", "operator": "equal", "operand": true}] 
+    },
+    { 
+        "keys": ["P"], "command" : "easy_motion_jump", "args": {"char" : "P"}, "context": 
+                [{"key": "setting.easy_motion", "operator": "equal", "operand": true}] 
+    },
+    { 
+        "keys": ["Q"], "command" : "easy_motion_jump", "args": {"char" : "Q"}, "context": 
+                [{"key": "setting.easy_motion", "operator": "equal", "operand": true}] 
+    },
+    { 
+        "keys": ["R"], "command" : "easy_motion_jump", "args": {"char" : "R"}, "context": 
+                [{"key": "setting.easy_motion", "operator": "equal", "operand": true}] 
+    },
+    { 
+        "keys": ["S"], "command" : "easy_motion_jump", "args": {"char" : "S"}, "context": 
+                [{"key": "setting.easy_motion", "operator": "equal", "operand": true}] 
+    },
+    { 
+        "keys": ["T"], "command" : "easy_motion_jump", "args": {"char" : "T"}, "context": 
+                [{"key": "setting.easy_motion", "operator": "equal", "operand": true}] 
+    },
+    { 
+        "keys": ["U"], "command" : "easy_motion_jump", "args": {"char" : "U"}, "context": 
+                [{"key": "setting.easy_motion", "operator": "equal", "operand": true}] 
+    },
+    { 
+        "keys": ["V"], "command" : "easy_motion_jump", "args": {"char" : "V"}, "context": 
+                [{"key": "setting.easy_motion", "operator": "equal", "operand": true}] 
+    },
+    { 
+        "keys": ["W"], "command" : "easy_motion_jump", "args": {"char" : "W"}, "context": 
+                [{"key": "setting.easy_motion", "operator": "equal", "operand": true}] 
+    },
+    { 
+        "keys": ["X"], "command" : "easy_motion_jump", "args": {"char" : "X"}, "context": 
+                [{"key": "setting.easy_motion", "operator": "equal", "operand": true}] 
+    },
+    { 
+        "keys": ["Y"], "command" : "easy_motion_jump", "args": {"char" : "Y"}, "context": 
+                [{"key": "setting.easy_motion", "operator": "equal", "operand": true}] 
+    },
+    { 
+        "keys": ["Z"], "command" : "easy_motion_jump", "args": {"char" : "Z"}, "context": 
+                [{"key": "setting.easy_motion", "operator": "equal", "operand": true}] 
+    }
+]
