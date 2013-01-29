@@ -13,6 +13,7 @@ class CancelEasymotionCommand(sublime_plugin.TextCommand):
 
 
 class EasyMotionCommand(sublime_plugin.TextCommand):
+    """ Turn on easy motion flag """
     def run(self, edit, direct = FORWARD):
         view = self.view
         settings = view.settings()
@@ -23,6 +24,7 @@ class EasyMotionCommand(sublime_plugin.TextCommand):
         replace_char(view, edit, direct)
 
 class EasyMotionJumpCommand(sublime_plugin.TextCommand):
+    """ Jump to char """
     def run(self, edit, char = 'Z'):
         view = self.view
         settings = view.settings()
@@ -30,6 +32,8 @@ class EasyMotionJumpCommand(sublime_plugin.TextCommand):
         cancel_easymotion(edit, settings, view, offset)
 
 def cancel_easymotion(edit, settings, view, offset):
+    """ Turn off easymotion is required when both jump and cancel,
+        Abstract it to a single func."""
     if typed_command(settings):
         restore_theme_syntax(settings, view)
         direct = settings.get('easy_motion_command')
@@ -42,6 +46,8 @@ def cancel_easymotion(edit, settings, view, offset):
     settings.set('easy_motion', False)
     settings.set('command_mode', True)
 
+##########################################################
+# Check State Func
 def in_em(settings):
     return settings.get('easy_motion')
 

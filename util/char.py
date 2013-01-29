@@ -1,20 +1,22 @@
 import sublime
 import os, pickle, re
 
-from path import package_path
+from path import package_path, state_cache
 
 FORWARD = 1
 BACKWARD = 2
 
 class NaviRegion:
+    """ state class for storing """
     def __init__(self, region, string, pair):
         self.begin = region.begin()
         self.end = region.end()
         self.string = string
         self.pair = pair
 
+
 def add_char():
-    """ Add character """
+    """ produce char from a to Z """
     ret = add_char.char
     if ret == 'z':
         add_char.char = 'A'
@@ -25,16 +27,22 @@ def add_char():
     return ret
 
 def region_check_point(region, string, pair):
-    """ Save origin region string and region position"""
+    """ Save origin region string and region position """
     navi = NaviRegion(region, string, pair)
-    f = open(package_path + '/state-store.cache', 'w+')
+    f = open(state_cache, 'w+')
     pickle.dump(navi, f)
     f.close()
+
+def read_check_point():
+    f = open(state_cache, 'r')
+    region = pickle.load(f)
+    f.close()
+    return region
 
 def locate_pair(direct, string):
     """ Locate the altered char in the string.
         Return value's the relative position in
-        string"""
+        string """
     start = 0
     add_char.char = 'a'
     pair = []
@@ -92,9 +100,8 @@ def restore_char(view, edit, direct):
     return region
 
 def search_pair(char):
-    f = open(package_path + '/state-store.cache', 'r')
-    region = pickle.load(f)
-    f.close()
+    """ Search though pair for postion according to char """
+    region = read_check_point()
     pair = region.pair 
     for p in pair:
         if p[0] == char:
@@ -102,6 +109,8 @@ def search_pair(char):
     return pair[-1][1]          # not found
 
 def jump(view, region, offset):
+    """ Move cursor to specific offset, 
+        if offset < 0, restore the cursor position """
     view.sel().clear()
     if offset < 0:              # cancel jump
         if not (offset + FORWARD):
