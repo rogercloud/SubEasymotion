@@ -15,9 +15,9 @@ import re
 import plistlib
 
 import sublime
-from path import package_path, sublime_path
+from path import package_path, package_name, sublime_path
 
-em_syntax = 'Packages/EasyMotion/EasyMotion.tmLanguage'
+em_syntax = 'Packages' + package_name + '/EasyMotion.tmLanguage'
 
 class Theme(object):
     """Global object represents ST color scheme """
@@ -46,7 +46,9 @@ class Theme(object):
 class EMTheme():
     def __init__(self, theme):
         self.theme = theme
-        self.easy_theme_cache = "/EasyMotion/themecache/"
+        self.easy_theme_cache = package_name + "/themecache/"
+        if not os.path.exists(package_path + self.easy_theme_cache):
+            os.mkdir(package_path + self.easy_theme_cache)
 
     def name(self):
         return self.theme.name() + "-easy"

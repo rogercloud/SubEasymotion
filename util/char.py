@@ -92,7 +92,7 @@ def replace_char(view, edit, direct):
 
 def restore_char(view, edit, direct):
     """ When edit complete, restore the strings """
-    f = open(package_path + '/state-store.cache', 'r')
+    f = open(state_cache, 'r')
     region = pickle.load(f)
     f.close()
     view.replace(edit, sublime.Region(region.begin, region.end), 

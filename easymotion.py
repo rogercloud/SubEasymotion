@@ -15,6 +15,7 @@ class CancelEasymotionCommand(sublime_plugin.TextCommand):
 class EasyMotionCommand(sublime_plugin.TextCommand):
     """ Turn on easy motion flag """
     def run(self, edit, direct = FORWARD):
+        print('easy motion')
         view = self.view
         settings = view.settings()
         settings.set('easy_motion', True)
