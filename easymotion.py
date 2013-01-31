@@ -39,7 +39,7 @@ def cancel_easymotion(edit, settings, view, offset):
         restore_theme_syntax(settings, view)
         direct = settings.get('easy_motion_command')
         region = restore_char(view, edit, direct)
-        if not offset:
+        if offset == None:
             jump(view, region, 0 - direct)
         else:
             jump(view, region, offset)
