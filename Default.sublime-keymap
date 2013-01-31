@@ -11,10 +11,6 @@
 
     // Cancel easy motion
     { 
-        "keys": ["ctrl+,"], "command" : "cancel_easymotion", "context": 
-                [{"key": "setting.easy_motion", "operator": "equal", "operand": true}] 
-    },
-    { 
         "keys": ["escape"], "command" : "cancel_easymotion", "context": 
                 [{"key": "setting.easy_motion", "operator": "equal", "operand": true}] 
     },
