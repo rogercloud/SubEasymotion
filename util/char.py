@@ -106,7 +106,7 @@ def search_pair(char):
     for p in pair:
         if p[0] == char:
             return p[1]
-    return pair[-1][1]          # not found
+    return None                 # not found
 
 def jump(view, region, offset):
     """ Move cursor to specific offset, 
