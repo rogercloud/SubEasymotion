@@ -57,14 +57,19 @@ def locate_pair(direct, string):
                 pos.append(start)
         else:
             break
+
     # BACKWARD needs for more care
     if direct == BACKWARD:
         pos.reverse()
         for p in pos:
             pair.append((add_char(), p))
+        # First Char in BACKWARD
+        if pos and (len(string) - 1) != pos[-1] \
+                and not (string[0] == ' ' or string[0] == '\t'):
+           pair.append((add_char(),0)) 
         
     return pair
-
+ 
 def _replace(string, location):
     """ Really does character replace work. """
     for l in location:
